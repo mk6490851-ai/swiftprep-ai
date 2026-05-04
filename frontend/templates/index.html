@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>SwiftPrep AI</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    .glass {
+      background: rgba(255,255,255,0.08);
+      backdrop-filter: blur(15px);
+      border-radius: 16px;
+      padding: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    }
+
+    .input {
+      width: 100%;
+      padding: 12px;
+      border-radius: 10px;
+      outline: none;
+      border: none;
+      color: black;
+    }
+
+    .btn {
+      width: 100%;
+      padding: 12px;
+      border-radius: 10px;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      transform: scale(1.03);
+    }
+
+    .result-box {
+      max-height: 250px;
+      overflow-y: auto;
+      background: #111;
+      padding: 10px;
+      border-radius: 10px;
+      margin-top: 10px;
+      white-space: pre-wrap;
+    }
+  </style>
+</head>
+
+<body class="bg-gradient-to-br from-purple-900 via-indigo-900 to-black text-white">
+
+<div class="max-w-5xl mx-auto p-6 space-y-8">
+
+  <!-- HEADER -->
+  <div class="text-center">
+    <h1 class="text-4xl font-bold">🚀 SwiftPrep AI</h1>
+    <p class="text-gray-300">Your AI Interview + Resume Assistant</p>
+  </div>
+
+  <!-- GRID -->
+  <div class="grid md:grid-cols-2 gap-6">
+
+    <!-- INTERVIEW -->
+    <div class="glass">
+      <h2 class="text-xl mb-3">🎯 Interview Generator</h2>
+
+      <input id="job" placeholder="Job Role" class="input">
+      <input id="skills" placeholder="Skills" class="input mt-2">
+
+      <button onclick="generate()" class="btn bg-purple-600 mt-3">
+        Generate Questions
+      </button>
+    </div>
+
+    <!-- ATS -->
+    <div class="glass">
+      <h2 class="text-xl mb-3">📊 ATS Analyzer</h2>
+
+      <input type="file" id="fileInput">
+      <textarea id="jd" placeholder="Paste Job Description" class="input mt-2"></textarea>
+
+      <button onclick="ats()" class="btn bg-pink-600 mt-3">
+        Analyze Resume
+      </button>
+
+      <div class="bg-gray-700 rounded-full mt-3">
+        <div id="progressBar" class="bg-green-400 h-4 rounded-full w-0"></div>
+      </div>
+    </div>
+
+    <!-- AI CHAT -->
+    <div class="glass">
+      <h2 class="text-xl mb-3">🤖 AI Interview</h2>
+
+      <input id="answer" placeholder="Type your answer..." class="input">
+      <button onclick="sendAnswer()" class="btn bg-blue-600 mt-2">Send</button>
+
+      <div id="chat" class="result-box"></div>
+    </div>
+
+    <!-- RESUME FIX -->
+    <div class="glass">
+      <h2 class="text-xl mb-3">📄 Resume Fixer</h2>
+
+      <input type="file" id="resumeFile">
+      <textarea id="resumeText" placeholder="Or paste resume..." class="input mt-2"></textarea>
+
+      <button onclick="fixResume()" class="btn bg-yellow-500 mt-3">
+        Fix Resume
+      </button>
+
+      <div id="fixBox" class="result-box">
+        <pre id="fixedResume"></pre>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- RESULT -->
+  <div class="glass">
+    <h2 class="text-xl">📋 Result</h2>
+    <div id="result" class="result-box"></div>
+  </div>
+
+</div>
+
+<script src="/static/script.js"></script>
+
+</body>
+</html>
