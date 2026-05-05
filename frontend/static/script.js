@@ -1,5 +1,6 @@
-async function generate(){
-const res = await fetch("/generate",{
+const BASE_URL=swiftprep-ai-production.up.railway.app
+  async function generate(){
+const res = await fetch(BASE_URL + "/generate",{
 method:"POST",
 headers:{"Content-Type":"application/json"},
 body:JSON.stringify({
@@ -17,7 +18,7 @@ const form = new FormData();
 form.append("resume",f);
 form.append("job",jd.value);
 
-const res = await fetch("/ats",{method:"POST",body:form});
+const res = await fetch(BASE_URL + "/ats",{method:"POST",body:form});
 const data = await res.json();
 result.innerText = data.text;
 
@@ -25,7 +26,7 @@ progressBar.style.width = (Math.random()*40+60)+"%";
 }
 
 async function sendAnswer(){
-const res = await fetch("/interview",{
+const res = await fetch(BASE_URL + "/interview",{
 method:"POST",
 headers:{"Content-Type":"application/json"},
 body:JSON.stringify({answer:answer.value})
@@ -40,11 +41,11 @@ const file = resumeFile.files[0];
 if(file){
 const form = new FormData();
 form.append("resume",file);
-const res = await fetch("/fix-resume-pdf",{method:"POST",body:form});
+const res = await fetch(BASE_URL + "/fix-resume-pdf",{method:"POST",body:form});
 const data = await res.json();
 fixedResume.innerText = data.fixed;
 }else{
-const res = await fetch("/fix-resume",{
+const res = await fetch(BASE_URL + "/fix-resume",{
 method:"POST",
 headers:{"Content-Type":"application/json"},
 body:JSON.stringify({resume:resumeText.value})
