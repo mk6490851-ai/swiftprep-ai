@@ -123,6 +123,9 @@ def fix_resume_pdf():
     messages = [{"role": "user", "content": f"Improve this resume:\n{resume_text[:3000]}"}]
 
     return jsonify({"fixed": ask_ai(messages)})
+@app.route("/health")
+def health():
+    return {"status": "ok"}, 200
 
 # ================= RUN =================
 if __name__ == "__main__":
